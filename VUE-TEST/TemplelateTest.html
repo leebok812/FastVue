@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        .normal {
+            color: blue;
+        }
+        .active{
+            color: red;
+        }
+    </style>
+    <div id="app">
+
+        <div v-once>{{ msg }}</div>
+        <div>-----------</div>
+        <div v-html="msg"></div>
+        <div>-----------</div>
+        <div>{{ number + 2 }}</div>
+        <div>-----------</div>
+        <div>{{new Date()}} </div>
+        <div>-----------</div>
+        <div>{{Math.round(1.7)</div>
+        <div>-----------</div>
+        <div v-bind:class="className" v-on:click="changeClassName">{{msg}}</div>
+        <div :class="className" @click="changeClassName">{{msg}}</div><!--위와 동일 약어로써 사용-->
+        </div>
+     
+     <script>
+
+            const vm = new Vue({
+                el: "#app",
+                data: {
+                    msg: 'Hello Vue <br/> Good job!', 
+                    number: 2,
+                    className: 'normal'
+                },
+                methods: {
+                    changeClassName () {
+                        this.className = 'active'
+                    }
+                }
+            })
+
+
+    </script>
+
+</body>
+</html> 
