@@ -8,5 +8,6 @@ A. Vue 가이드 문서 따라가기<br>
 5. Computed Caching<br>
 6. Computed의 Getter,Setter<br>
 7. Watch<br>
+8. V-IF<Br>
 
 

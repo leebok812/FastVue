@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+            <style>
+                .box{
+                    width: 100px;
+                    height: 100px;
+                    }
+                .box--red {
+                    background-color: red;
+                    }
+                .box--blue{
+                    background-color: blue;
+                }
+                .box--gray{
+                    background-color: gray;
+                }
+            </style>
+            
+            <div id="app">
+                <div v-if="colorState === 'red'" class="box box--red"></div>
+                <div v-else-if="colorState === 'blue'" class="box box--blue"></div>
+                <div v-else class="box box--gray"></div> <!--if // if else // else 처럼 else에는 조건이 필요 없다-->
+            </div>
+
+            <script>
+                const vm = new Vue({
+                el:'#app',
+                data: {
+                    colorState: 'aaaaa'
+                        }
+                })
+            </script>
+</body>
+</html>
