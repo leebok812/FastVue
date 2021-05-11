@@ -12,5 +12,6 @@ A. Vue 가이드 문서 따라가기<br>
 9. V-Show<br>
 10. Array<br>
 11. Object<br>
+12. Vue.set||this.$set<br>
 
 
