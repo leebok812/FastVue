@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        .parent {
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+    </style>
+
+
+    <div id="app">
+        <div class="parent" @click="ClickHandler">
+            <div class="child" @click.stop="ClickHandler"></div> <!--이벤트 버블링을 막음 .stop-->
+        </div>
+        <div class="parent" @click.capture="ClickHandler"> <!-- capturing 적용 parent가 먼저 뜨고 child 뜸 -->
+            <div class="child" @click.stop="ClickHandler"></div> 
+        </div>
+        <div class="parent" @click.self="ClickHandler"> <!--파란색 클릭하면 parent뜨지만 빨간색 클릭하면 무반응 자기자신만 반응 하게 함-->
+            <div class="child" ></div> 
+        </div>
+    </div>
+
+    <script>
+
+    const vm = new Vue({
+        el:'#app',
+        methods:{
+            ClickHandler (event) {
+                    console.log(event.currentTarget.className)
+            }
+        }
+    })
+    </script>
+</body>
+</html>
