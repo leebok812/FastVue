@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+    <div id="app">
+        <my-component/>
+    </div>
+    <div id="app1">
+        <my-comp1/>
+    </div>
+    <div id="app2">
+        <my-C/>  <!--쓰는 곳은 케밥 케이스로 작성 스크립트 부분은 카멜케이스로 작성-->
+    </div>
+
+    <script> 
+        //전역등록의 예
+        Vue.component('my-component', {  // 컴포넌트 이름을 작성할때는 다른것들과 중복될 수 있으므로 두개의 단어를 혼합하는 방식을 추천
+            template: '<div class="me">{{ message }}</div>',
+            data: function() {
+                return {
+                    message: 'Hello Vue!'
+                }
+            }
+        })
+
+        const myComp = { //지역등록 1
+            template: '<div class="me">{{ message }}</div>',
+            data: function() {
+                return {
+                    message: 'local Component1'
+                }
+            }
+        }
+
+        const myC = { // 지역 등록 2
+            template: '<div class="me">{{ message }}</div>',
+            data: function() {
+                return {
+                    message: 'local Component2'
+                }
+            }
+        }
+
+
+        const vm = new Vue({
+            el: '#app'
+
+        })
+        const vm1 = new Vue({
+            el: '#app1',
+            components : {
+                'my-comp1' : myComp
+            }
+
+        })
+        const vm2 = new Vue({
+            el: '#app2',
+            components : {
+                myC  // 카멜케이스로 작성(컴포넌트의 이름과 같음) HTML부분은 케밥케이스로 작성
+            }
+
+        })
+
+    </script>
+
+</body>
+</html>
