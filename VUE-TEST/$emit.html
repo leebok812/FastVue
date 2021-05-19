@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+    <div id="app">
+        <!--/////////////////////////////자식//////////////////////////-->
+        <my-comp v-bind:my-msg="message" v-on:my-event="updateMessage"></my-comp>      <!-- v-bind = :  v-on = @-->
+    </div>
+
+    <script> 
+        Vue.component('my-comp',{
+            template:'<div @click="updateMsg">{{ myMsg }}</div>',
+            props: {
+                myMsg: String
+            },
+            methods: {
+                updateMsg () {
+                  //  this.myMsg = 'Good!'  // 이렇게 해도 작동은 되나 자식에서 부모를 직접적으로 바꾸면 안됨 $emit을 써야함
+                  this.$emit('my-event', 'Good')
+                }
+            }
+        })
+
+        //////////////////// 부모///////////////////////////////////
+        const vm = new Vue({
+            el: '#app',
+            data () {
+                return {
+                    message: 'Hello!'
+                }
+            },
+            methods: {
+                updateMessage (value) {
+                    this.message = value
+                }
+            }
+        })
+     
+    </script>
+
+</body>
+</html>
