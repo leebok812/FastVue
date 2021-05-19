@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<!-- 
+    <div id="app1">
+        <my-comp1>
+            <input type="text">
+            Hello Slot!
+        </my-comp1>
+    </div> -->
+    <br><br><br><br>
+    <!-- <div id="app2">
+        <my-comp2>
+            <div slot="slot1">Hello Slot!</div> 이 div는 slot1에 삽입하겠다는 개념
+            <input type="text">
+        </my-comp2>
+    </div> -->
+    <br><br><br><br>
+    <!-- <div id="app3">
+        <my-comp3>
+            <template slot-scope="myProps">
+                {{ myProps.mySlotData }}
+            </template>
+        </my-comp3>
+    </div> -->
+    <br><br><br><br>
+    <div id="app4">
+        <my-comp4>
+            <template slot-scope="{mySlotData}"> <!-- bind되어서 바로 갖고옴-->
+                {{ mySlotData }}
+            </template>
+        </my-comp4>
+    </div>
+
+
+    <script> 
+        // Vue.component('my-comp1',{
+        //     template:'<div><slot></slot></div>'
+        // })
+        // const vm = new Vue({
+        //     el: '#app1'
+        // })
+
+        // Vue.component('my-comp2',{
+        //     template:'<div> <slot></slot> <slot name="slot1"></slot> </div>' // <slot></slot>을 삽입하면 app2에서 input이 Hello Slot!보다 뒤에 작성되었음에도 <slot></slot>으로 인해 앞에 위치하게된다.
+        // })
+        // const vm = new Vue({
+        //     el: '#app2'
+        // })
+
+        // Vue.component('my-comp3',{
+        //     template:'<div><slot my-slot-data="Hello Slot!"></slot></div>'
+        // })
+        // const vm = new Vue({
+        //     el: '#app3'
+        // })
+
+        Vue.component('my-comp4',{
+            template:'<div><slot v-bind:my-slot-data="message"></slot></div>',
+            data () {
+                return { 
+                    message: 'Hello Slot?'
+                }
+            }
+        })
+        const vm = new Vue({
+            el: '#app4'
+        })
+     
+    </script>
+
+</body>
+</html>
