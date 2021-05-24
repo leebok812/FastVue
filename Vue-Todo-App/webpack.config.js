@@ -1,5 +1,6 @@
 
 const path = require('path') //nodeJs에서 제공하는 path 모듈
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 
 module.exports = {
@@ -10,8 +11,19 @@ module.exports = {
         filename: '[name].js', // 결과물이 나오는 이름 || 대괄호 [] 안에 name을 넣어주면 진입점 app이 자동으로 박힘
         path: path.join(__dirname,'dist') // dist는 디렉토리 이름임
     }, 
-    module: {}, 
-    plugins: []
+    module: {
+        rules:[
+
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            }
+
+        ]       
+    }, 
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 
 }
 
