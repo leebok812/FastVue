@@ -13,6 +13,8 @@
   "author": "JUNE",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.5",
     "vue-loader": "^15.9.7",
@@ -22,6 +24,7 @@
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "vue": "^2.6.12"
   }
 }
