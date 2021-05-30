@@ -3,6 +3,7 @@ const path = require('path') //nodeJs에서 제공하는 path 모듈
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin') //ES6 문법
 require('@babel/polyfill')
 
 
@@ -51,7 +52,8 @@ module.exports = {
                 {from:'assets/', to:''} // assets에 있는 모든 파일을 복사해서 to로 보내주는것
                 ]  // https://stackoverflow.com/questions/61937054/npm-run-dev-fails-validationerror-invalid-options-object
             }
-        )
+        ),
+        new CleanWebpackPlugin () // dist folder를 비워줌 
     ]
 
 }
