@@ -54,7 +54,12 @@ module.exports = {
             }
         ),
         new CleanWebpackPlugin () // dist folder를 비워줌 
-    ]
+    ],
+    devServer: { //npx webpack serve  참조 : https://velog.io/@code-bebop/webpack-dev-server-module-not-found-error
+        open: false,
+        hot: true
+    },
+    devtool: 'evel'
 
 }
 
