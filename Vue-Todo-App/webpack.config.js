@@ -2,6 +2,7 @@
 const path = require('path') //nodeJs에서 제공하는 path 모듈
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 require('@babel/polyfill')
 
 
@@ -43,7 +44,14 @@ module.exports = {
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'index.html')
-        })
+        }), 
+        new CopyPlugin(
+            {
+                patterns: [
+                {from:'assets/', to:''} // assets에 있는 모든 파일을 복사해서 to로 보내주는것
+                ]  // https://stackoverflow.com/questions/61937054/npm-run-dev-fails-validationerror-invalid-options-object
+            }
+        )
     ]
 
 }
