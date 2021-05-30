@@ -1,6 +1,7 @@
 
 const path = require('path') //nodeJs에서 제공하는 path 모듈
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 require('@babel/polyfill')
 
 
@@ -39,7 +40,10 @@ module.exports = {
         ]       
     }, 
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'index.html')
+        })
     ]
 
 }
